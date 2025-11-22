@@ -9,6 +9,14 @@
 //   </StrictMode>,
 // )
 
+const input = document.querySelector("input");
+const typed = document.getElementById("typed_Times");
+const run = document.getElementById("funcRun_Times");
 
-console.log("add")
+const typedTimes = 0;
+const runTimes = 0;
 
+input.addEventListener("input", () => {
+  typed.innerHTML += typedTimes;
+  run.innerHTML += runTimes;
+});
