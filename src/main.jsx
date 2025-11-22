@@ -13,32 +13,26 @@ const input = document.querySelector("input");
 const typed = document.querySelector("#typed_Times");
 const run = document.querySelector("#funcRun_Times");
 
-const typedTimes = 0;
-const runTimes = 0;
+let typedTimes = 0;
+let runTimes = 0;
 
+const myDebounce = (func, delay) => {
+  let timer = 0;
 
-const myDebounce=(func,delay)=>{
+  return function (...args) {
+    clearTimeout(timer);
+    timer=setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
 
-  let timer=0
-
-  return function(){
-    clearTimeout(timer)
-    setTimeout(()=>{
-
-    },delay)
-  }
-
-}
-
-
-
-const debounceFunc=myDebounce(()=>{
-run.innerHTML += runTimes;
-},1500)
-
+const debounceFunc = myDebounce(() => {
+  // run.innerHTML = runTimes++;
+  run.innerHTML = ++runTimes;
+}, 2000);
 
 input.addEventListener("input", () => {
-  typed.innerHTML += typedTimes;
-  debounceFunc()
-  
+  typed.innerHTML =typedTimes++;
+  debounceFunc();
 });
