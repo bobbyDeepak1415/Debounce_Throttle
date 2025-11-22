@@ -1,13 +1,18 @@
 // import "./App.css";
 
+import { useState } from "react";
+
 function App() {
-  const handleChange = (e) => {
-    alert(e.target.value);
+  const [input, setInput] = useState("");
+  const handleClick = (e) => {
+    alert(input);
+    setInput('')
   };
 
   return (
     <div>
-      <input onChange={() => handleChange()}></input>
+      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <button onClick={handleClick}>Click</button>
     </div>
   );
 }
