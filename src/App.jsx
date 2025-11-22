@@ -1,12 +1,13 @@
-import "./App.css";
+// import "./App.css";
 
 function App() {
+  const handleChange = (e) => {
+    alert(e.target.value);
+  };
 
   return (
     <div>
-
-      <input></input>
-     
+      <input onChange={() => handleChange()}></input>
     </div>
   );
 }
