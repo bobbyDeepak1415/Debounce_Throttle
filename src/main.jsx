@@ -9,30 +9,31 @@
 //   </StrictMode>,
 // )
 
-const input = document.querySelector("input");
-const typed = document.querySelector("#typed_Times");
-const run = document.querySelector("#funcRun_Times");
+const button = document.querySelector("button");
+const clicked = document.getElementById("clicked_Times");
+const run = document.getElementById("funcRun_Times");
 
-let typedTimes = 0;
+let clickedTimes = 0;
 let runTimes = 0;
 
-const myDebounce = (func, delay) => {
-  let timer = 0;
+const myThrottle = (func, delay) => {
+  let lastRun = 0;
 
-  return function (...args) {
-    clearTimeout(timer);
-    timer=setTimeout(() => {
-      func(...args);
-    }, delay);
+  let now = Date.now();
+
+  return function () {
+    if (now - lastRun > delay) {
+      lastRun = now;
+      func();
+    }
   };
 };
 
-const debounceFunc = myDebounce(() => {
-  // run.innerHTML = runTimes++;
+const throttleFunc = myThrottle(() => {
   run.innerHTML = ++runTimes;
-}, 2000);
+}, 1500);
 
-input.addEventListener("input", () => {
-  typed.innerHTML =typedTimes++;
-  debounceFunc();
+button.addEventListener("click", () => {
+  clicked.innerHTML = ++clickedTimes;
+  throttleFunc();
 });
