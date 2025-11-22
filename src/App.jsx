@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [input, setInput] = useState("");
-  const handleClick = (e) => {
+  const handleClick = () => {
     alert(input);
     setInput('')
   };
