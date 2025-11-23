@@ -17,23 +17,22 @@ const run = document.getElementById("funcRun_Times");
 let clickedTimes = 0;
 let runTimes = 0;
 
-const myThrottle = (func, delay) => {
-  let lastRun = 0;
+const myDebounce = (func, interval) => {
+  let timer = 0;
 
   return function (...args) {
-    let now = Date.now();
-    if (now - lastRun > delay) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
       func(...args);
-      lastRun = now;
-    }
+    }, interval);
   };
 };
 
-const throttleFunc = myThrottle(() => {
+const debounceFunc = myDebounce(() => {
   run.innerHTML = ++runTimes;
 }, 1500);
 
 button.addEventListener("click", () => {
   clicked.innerHTML = ++clickedTimes;
-  throttleFunc();
+  debounceFunc();
 });
