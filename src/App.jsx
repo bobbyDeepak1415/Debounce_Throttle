@@ -6,7 +6,7 @@ function App() {
   const [input, setInput] = useState("");
   const handleClick = () => {
     alert(input);
-    setInput('')
+    setInput("");
   };
 
   return (
