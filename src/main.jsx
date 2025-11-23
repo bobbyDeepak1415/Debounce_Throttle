@@ -17,9 +17,23 @@ const run = document.getElementById("funcRun_Times");
 let clickedTimes = 0;
 let runTimes = 0;
 
+const myThrottle = (func, delay) => {
+  let lastRun = 0;
+
+  return function (...args) {
+    let now = Date.now();
+    if (now - lastRun > delay) {
+      func(...args);
+      lastRun = now;
+    }
+  };
+};
+
+const throttleFunc = myThrottle(() => {
+  run.innerHTML = ++runTimes;
+}, 1500);
+
 button.addEventListener("click", () => {
   clicked.innerHTML = ++clickedTimes;
-  run.innerHTML = ++runTimes;
+  throttleFunc();
 });
-
-
