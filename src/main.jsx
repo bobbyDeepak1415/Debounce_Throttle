@@ -9,4 +9,17 @@
 //   </StrictMode>,
 // )
 
+const button = document.querySelector("button");
+
+const clicked = document.querySelector("#clicked_Times");
+const run = document.getElementById("funcRun_Times");
+
+let clickedTimes = 0;
+let runTimes = 0;
+
+button.addEventListener("click", () => {
+  clicked.innerHTML = ++clickedTimes;
+  run.innerHTML = ++runTimes;
+});
+
 
