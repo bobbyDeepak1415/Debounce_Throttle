@@ -1,6 +1,7 @@
 // import "./App.css";
 
 import { useState } from "react";
+import Todo from "./Todo";
 
 function App() {
   const [input, setInput] = useState("");
@@ -11,8 +12,7 @@ function App() {
 
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
-      <button onClick={handleClick}>Click</button>
+      <Todo props={{ input, setInput, handleClick }} />
     </div>
   );
 }
