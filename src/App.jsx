@@ -12,7 +12,8 @@ function App() {
 
   return (
     <div>
-      <Todo input={input} setInput={setInput} handleClick={handleClick} />
+      {/* <Todo {{input:input,setInput:setInput,handleClick:handleClick}} /> */}
+      <Todo {...{ input, setInput, handleClick }} />
     </div>
   );
 }
