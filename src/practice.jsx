@@ -20,10 +20,11 @@ const myThrottle = (func, interval) => {
 
 const throttleFunc = myThrottle(() => {
   funcRun.innerHTML = ++runTimes;
-}, 1000);
+}, 1500);
 
 button.addEventListener("click", () => {
   clicked.innerHTML = ++clickedTimes;
 
   throttleFunc();
 });
+.
