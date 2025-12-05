@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ( props) => {
+const Todo = ({ props}) => {
   const { input, handleClick, setInput } = props;
 
   return (
