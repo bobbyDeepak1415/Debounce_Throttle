@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div>
-      <Todo props={{ input, setInput, handleClick }} />
+      <Todo setInput={setInput} handleClick={handleClick} input={input}/>
     </div>
   );
 }
