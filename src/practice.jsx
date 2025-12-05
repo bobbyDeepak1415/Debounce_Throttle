@@ -5,23 +5,25 @@ const funcRun = document.getElementById("funcRun_Times");
 let clickedTimes = 0;
 let runTimes = 0;
 
-const myDebounce = (func, delay) => {
-  let timer = 0;
+const myThrottle = (func, interval) => {
+  let lastRun = 0;
 
   return function (...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
+    let now = Date.now();
+
+    if (now - lastRun > interval) {
+      lastRun = now;
       func(...args);
-    }, delay);
+    }
   };
 };
 
-const debounceFunc = myDebounce(() => {
+const throttleFunc = myThrottle(() => {
   funcRun.innerHTML = ++runTimes;
-}, 800);
+}, 1000);
 
 button.addEventListener("click", () => {
   clicked.innerHTML = ++clickedTimes;
 
-  debounceFunc();
+  throttleFunc();
 });
