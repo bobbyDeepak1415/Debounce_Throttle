@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Todo = (props) => {
   const { handleClick, setInput, input, filteredNames } = props;
+
+  const [localValue, setLocalValue] = useState("");
 
   const myDebounce = (func, delay) => {
     let timer = 0;
@@ -15,13 +17,21 @@ const Todo = (props) => {
     };
   };
 
-  const handleChange = myDebounce((e) => {
-    setInput(e.target.value);
-  }, 1000);
+  const debouncedState = myDebounce((value) => {
+    setInput(value);
+  }, 3000);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+
+    setLocalValue(value);
+
+    debouncedState(value);
+  };
 
   return (
     <div>
-      <input value={input} onChange={handleChange}></input>
+      <input value={localValue} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
 
       <div>
