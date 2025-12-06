@@ -25,17 +25,19 @@ function App() {
   };
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     if (input === "") {
       setFilteredNames([]);
     } else {
       const match = userNames.filter((name) =>
         name.toLowerCase().startsWith(input.toLowerCase())
       );
+
+      setFilteredNames(match);
     }
-
-    setFilteredNames(match);
-
-    fetchData();
   }, [input, userNames]);
 
   const handleClick = () => {
