@@ -7,6 +7,9 @@ import axios from "axios";
 function App() {
   const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
+  const [userNames,setUserNames]=useState([])
+  const [filteredUserNames,setFilteredUserNames]=useState([])
+  
 
   const fetchData = async () => {
     try {
@@ -15,6 +18,7 @@ function App() {
 
       console.log(result);
       setUsers(result);
+      setUserNames(result.map((u)=>u.firstName))
     } catch (e) {
       console.error("failed to fetch", e);
       setUsers([]);
@@ -33,7 +37,7 @@ function App() {
   return (
     <div>
       <Todo
-        props={{ input: input, setInput: setInput, handleClick: handleClick }}
+        props={{filteredUserNames:filteredUserNames,userNames:userNames, input: input, setInput: setInput, handleClick: handleClick }}
       />
     </div>
   );
