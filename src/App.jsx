@@ -6,6 +6,7 @@ import axios from "axios";
 
 function App() {
   const [input, setInput] = useState("");
+  const [data,setData]=useState([])
 
   // const [name,setName]=useState("")
 
@@ -13,7 +14,7 @@ function App() {
     try {
       const res = await axios.get("https://dummyjson.com/users");
 
-      res ? setInput(res.data.result) : [];
+      res ? setData(res.data.result) : [];
     } catch (e) {
       console.error("failed to fetch", e);
     }
@@ -21,7 +22,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
 
   const handleClick = () => {
     alert(input);
