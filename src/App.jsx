@@ -19,7 +19,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchData();.
+    fetchData();
   }, []);
 
   const filteredNames = userNames.filter((name) =>

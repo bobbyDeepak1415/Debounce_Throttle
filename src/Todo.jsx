@@ -3,9 +3,25 @@ import React from "react";
 const Todo = (props) => {
   const { handleClick, setInput, input, filteredNames } = props;
 
+  const myDebounce = (func, delay) => {
+    let timer = 0;
+
+    return function (...args) {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const handleChange = myDebounce((e) => {
+    setInput(e.target.value);
+  }, 1000);
+
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <input value={input} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
 
       <div>
@@ -19,4 +35,3 @@ const Todo = (props) => {
 };
 
 export default Todo;
-24
