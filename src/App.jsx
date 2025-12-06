@@ -7,9 +7,8 @@ import axios from "axios";
 function App() {
   const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
-  const [userNames,setUserNames]=useState([])
-  const [filteredNames,setFilteredNames]=useState([])
-  
+  const [userNames, setUserNames] = useState([]);
+  const [filteredNames, setFilteredNames] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -18,7 +17,7 @@ function App() {
 
       console.log(result);
       setUsers(result);
-      setUserNames(result.map((u)=>u.firstName))
+      setUserNames(result.map((u) => u.firstName));
     } catch (e) {
       console.error("failed to fetch", e);
       setUsers([]);
@@ -26,8 +25,18 @@ function App() {
   };
 
   useEffect(() => {
+    if (input === "") {
+      setFilteredNames([]);
+    } else {
+      const match = userNames.filter((name) =>
+        name.toLowerCase().startsWith(input.toLowerCase())
+      );
+    }
+
+    setFilteredNames(match);
+
     fetchData();
-  }, []);
+  }, [input, userNames]);
 
   const handleClick = () => {
     alert(input);
@@ -37,7 +46,12 @@ function App() {
   return (
     <div>
       <Todo
-        props={{filteredNames:filteredNames,userNames:userNames, input: input, setInput: setInput, handleClick: handleClick }}
+        props={{
+          filteredNames: filteredNames,
+          input: input,
+          setInput: setInput,
+          handleClick: handleClick,
+        }}
       />
     </div>
   );
