@@ -8,7 +8,7 @@ function App() {
   const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
   const [userNames,setUserNames]=useState([])
-  const [filteredUserNames,setFilteredUserNames]=useState([])
+  const [filteredNames,setFilteredNames]=useState([])
   
 
   const fetchData = async () => {
@@ -37,7 +37,7 @@ function App() {
   return (
     <div>
       <Todo
-        props={{filteredUserNames:filteredUserNames,userNames:userNames, input: input, setInput: setInput, handleClick: handleClick }}
+        props={{filteredNames:filteredNames,userNames:userNames, input: input, setInput: setInput, handleClick: handleClick }}
       />
     </div>
   );

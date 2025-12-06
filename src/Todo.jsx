@@ -1,14 +1,14 @@
 import React from "react";
 
 const Todo = ({ props }) => {
-  const { input, handleClick, setInput, userNames, filteredUserNames } = props;
+  const { input, handleClick, setInput, userNames, filteredNames } = props;
 
   return (
     <div>
       <input value={input} onChange={(e) => setInput(e.target.value)}></input>
       <button onClick={handleClick}>Click</button>
       <div>
-        {filteredUserNames.map((name, id) => {
+        {filteredNames.map((name, id) => {
           return <li key={id}>{name}</li>;
         })}
       </div>
@@ -17,4 +17,3 @@ const Todo = ({ props }) => {
 };
 
 export default Todo;
-.
