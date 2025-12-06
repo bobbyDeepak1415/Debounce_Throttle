@@ -8,17 +8,16 @@ function App() {
   const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
 
-
   const fetchData = async () => {
     try {
       const res = await axios.get("https://dummyjson.com/users");
       const result = res.data.users;
 
       console.log(result);
-      setUsers(result )
+      setUsers(result);
     } catch (e) {
       console.error("failed to fetch", e);
-      setUsers([])
+      setUsers([]);
     }
   };
 
