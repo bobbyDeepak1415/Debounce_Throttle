@@ -1,10 +1,27 @@
 // import "./App.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Todo from "./Todo";
+import axios from "axios";
 
 function App() {
   const [input, setInput] = useState("");
+
+  // const [name,setName]=useState("")
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("https://dummyjson.com/users");
+      setInput(res.result.data);
+    } catch (e) {
+      console.error("failed to fetch", e);
+    }
+  };
+
+  useEffect(() => {
+    // fetchData();
+  }, []);
+
   const handleClick = () => {
     alert(input);
     setInput("");
@@ -12,7 +29,9 @@ function App() {
 
   return (
     <div>
-      <Todo props={{input:input,setInput:setInput,handleClick:handleClick}} />
+      <Todo
+        props={{ input: input, setInput: setInput, handleClick: handleClick }}
+      />
     </div>
   );
 }
