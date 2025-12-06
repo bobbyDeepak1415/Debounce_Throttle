@@ -12,14 +12,15 @@ function App() {
   const fetchData = async () => {
     try {
       const res = await axios.get("https://dummyjson.com/users");
-      setInput(res.result.data);
+
+      res ? setInput(res.data.result) : [];
     } catch (e) {
       console.error("failed to fetch", e);
     }
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
 
   const handleClick = () => {
