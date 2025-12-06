@@ -6,23 +6,25 @@ import axios from "axios";
 
 function App() {
   const [input, setInput] = useState("");
-  const [data,setData]=useState([])
+  const [users, setUsers] = useState([]);
 
-  // const [name,setName]=useState("")
 
   const fetchData = async () => {
     try {
       const res = await axios.get("https://dummyjson.com/users");
+      const result = res.data.users;
 
-      res ? setData(res.data.result) : [];
+      console.log(result);
+      setUsers(result )
     } catch (e) {
       console.error("failed to fetch", e);
+      setUsers([])
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [data]);
+  }, []);
 
   const handleClick = () => {
     alert(input);
