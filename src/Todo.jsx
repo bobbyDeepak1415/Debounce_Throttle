@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
 
-const Todo = () => {
+const Todo = (props) => {
+  const { handleClick, setInput, input, filteredNames } = props;
+
   return (
     <div>
-      
-    </div>
-  )
-}
+      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <button onClick={handleClick}>Enter</button>
 
-export default Todo
+      <div>
+        {input.length > 0 &&
+          filteredNames.map((name, id) => {
+            return <li key={id}>{name}</li>;
+          })}
+      </div>
+    </div>
+  );
+};
+
+export default Todo;

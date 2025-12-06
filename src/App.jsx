@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import Todo from "./Todo";
+
 const App = () => {
   const [input, setInput] = useState("");
 
@@ -20,6 +22,10 @@ const App = () => {
     fetchData();
   }, []);
 
+  const filteredNames = userNames.filter((name) =>
+    name.toLowerCase().startsWith(input.toLowerCase())
+  );
+
   const handleClick = () => {
     alert(input);
     setInput("");
@@ -27,8 +33,12 @@ const App = () => {
 
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
-      <button onClick={handleClick}>Enter</button>
+      <Todo
+        handleClick={handleClick}
+        filteredNames={filteredNames}
+        input={input}
+        setInput={setInput}
+      />
     </div>
   );
 };
