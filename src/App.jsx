@@ -17,7 +17,7 @@ function App() {
 
       console.log(result);
       setUsers(result);
-      setUserNames(result.map((u) => u.firstName));
+      setUserNames(result.map((u) => u.firstName));.
     } catch (e) {
       console.error("failed to fetch", e);
       setUsers([]);
