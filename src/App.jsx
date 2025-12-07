@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState("");
 
   const [userNames, setUserNames] = useState([]);
 
@@ -22,6 +22,10 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleChange=()=>{
+    
+  }
 
   const filteredNames = userNames.filter((name) =>
     name.toLowerCase().startsWith(input.toLowerCase())
