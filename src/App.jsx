@@ -23,10 +23,27 @@ const App = () => {
     fetchData();
   }, []);
 
+  const myDebounce = (func, delay) => {
+    let timer = 0;
+
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debouncedState = myDebounce((value) => {
+    setInput(value);
+  }, 1500);
+
   const handleChange = (e) => {
     const value = e.target.value;
 
     setInput(value);
+
+    debouncedState(value);
   };
 
   const filteredNames = userNames.filter((name) =>
