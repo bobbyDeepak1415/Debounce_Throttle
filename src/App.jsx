@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []);v
 
   const filteredNames = userNames.filter((name) =>
     name.toLowerCase().startsWith(input.toLowerCase())
