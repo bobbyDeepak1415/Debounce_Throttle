@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
-  return <div></div>;
+  const [input, setInput] = useState([]);
+
+  const [users,setUsers]=useState([])
+
+
+  const handleClick=()=>{
+    
+  }
+
+  return (
+    <div>
+      <input value={input} onChange={(e)=>setInput(e.target.value)}></input>
+      <button onClick={handleClick}>Enter</button>
+      <div>{}</div>
+    </div>
+  );
 };
 
 export default App;
