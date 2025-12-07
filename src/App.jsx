@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
   const [input, setInput] = useState([]);
 
-  const [users, setUsers] = useState([]);
+  const [userNames, setUserNames] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -12,11 +12,16 @@ const App = () => {
 
       const result = await response.data.users;
 
-      setUsers(result);
+      console.log(result.map((u) => u.firstName));
+      setUserNames(result.map(u=>u.firstName));
     } catch (e) {
       console.log("failed to fetch...", e);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleClick = () => {};
 
