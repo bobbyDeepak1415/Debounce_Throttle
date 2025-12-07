@@ -23,7 +23,12 @@ const App = () => {
     fetchData();
   }, []);
 
-  const handleClick = () => {};
+  const handleClick = () => {
+
+    alert(input)
+    setInput("")
+
+  };
 
   return (
     <div>
