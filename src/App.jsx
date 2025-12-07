@@ -38,7 +38,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []);.
 
   const handleChange = (e) => {
     const value = e.target.value;
