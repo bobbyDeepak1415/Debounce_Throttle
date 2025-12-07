@@ -23,9 +23,11 @@ const App = () => {
     fetchData();
   }, []);
 
-  const handleChange=()=>{
-    
-  }
+  const handleChange = (e) => {
+    const value = e.target.value;
+
+    setInput(value);
+  };
 
   const filteredNames = userNames.filter((name) =>
     name.toLowerCase().startsWith(input.toLowerCase())
@@ -38,7 +40,7 @@ const App = () => {
 
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <input value={input} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
       <div>
         <ul>
