@@ -6,11 +6,13 @@ const App = () => {
 
   const [userNames, setUserNames] = useState([]);
 
+  const [localValue, setLocalValue] = useState("");
+
   const fetchData = async () => {
     try {
       const response = await axios.get("https://dummyjson.com/users");
 
-      const result = await response.data.users;
+      const result = response.data.users;
 
       console.log(result.map((u) => u.firstName));
       setUserNames(result.map((u) => u.firstName));
@@ -41,8 +43,7 @@ const App = () => {
   const handleChange = (e) => {
     const value = e.target.value;
 
-    setInput(value);
-
+    setLocalValue(value);
     debouncedState(value);
   };
 
@@ -52,18 +53,20 @@ const App = () => {
 
   const handleClick = () => {
     alert(input);
+    setLocalValue("");
     setInput("");
   };
 
   return (
     <div>
-      <input value={input} onChange={handleChange}></input>
+      <input value={localValue} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
       <div>
         <ul>
-          {filteredNames.map((user, id) => {
-            return <li key={id}>{user}</li>;
-          })}
+          {input.length > 0 &&
+            filteredNames.map((user, id) => {
+              return <li key={id}>{user}</li>;
+            })}
         </ul>
       </div>
     </div>
