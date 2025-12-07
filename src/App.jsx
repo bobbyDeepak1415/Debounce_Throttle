@@ -13,7 +13,7 @@ const App = () => {
       const result = await response.data.users;
 
       console.log(result.map((u) => u.firstName));
-      setUserNames(result.map(u=>u.firstName));
+      setUserNames(result.map((u) => u.firstName));
     } catch (e) {
       console.log("failed to fetch...", e);
     }
@@ -23,18 +23,26 @@ const App = () => {
     fetchData();
   }, []);
 
+  const filteredNames = userNames.filter((name) =>
+    name.toLowerCase().startsWith(input.toLowerCase())
+  );
+
   const handleClick = () => {
-
-    alert(input)
-    setInput("")
-
+    alert(input);
+    setInput("");
   };
 
   return (
     <div>
       <input value={input} onChange={(e) => setInput(e.target.value)}></input>
       <button onClick={handleClick}>Enter</button>
-      <div>{}</div>
+      <div>
+        <ul>
+          {filteredNames.map((user, id) => {
+            return <li key={id}>{user}</li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
