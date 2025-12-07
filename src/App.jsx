@@ -6,8 +6,6 @@ const App = () => {
 
   const [userNames, setUserNames] = useState([]);
 
-  const [localValue, setLocalValue] = useState("");
-
   const fetchData = async () => {
     try {
       const response = await axios.get("https://dummyjson.com/users");
@@ -25,27 +23,9 @@ const App = () => {
     fetchData();
   }, []);
 
-  const myDebounce = (func, delay) => {
-    let timer = 0;
-
-    return function (...args) {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  };
-
-  const debouncedState = myDebounce((value) => {
-    setInput(value);
-  }, 1500);
-
   const handleChange = (e) => {
     const value = e.target.value;
-
-    setLocalValue(value);
-
-    debouncedState(value);
+    setInput(value);
   };
 
   const filteredNames = userNames.filter((name) =>
@@ -59,7 +39,7 @@ const App = () => {
 
   return (
     <div>
-      <input value={localValue} onChange={handleChange}></input>
+      <input value={input} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
       <div>
         <ul>
