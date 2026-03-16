@@ -24,4 +24,5 @@ function countStudents(students, sandwiches) {
 }
 
 // console.log(countStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
-console.log(countStudents([1, 1,0,0], [0,1,0,1]));
+
+// console.log(countStudents([1, 1, 0, 0], [0, 1, 0, 1]));
