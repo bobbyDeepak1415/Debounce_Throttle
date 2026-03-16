@@ -9,8 +9,7 @@
 //   </StrictMode>,
 // )
 
-console.log("hello")
-
+console.log("hello");
 
 function countStudents(students, sandwiches) {
   for (let i = 0; i <= students.length; i++) {
@@ -29,4 +28,4 @@ function countStudents(students, sandwiches) {
   return students.length;
 }
 
-console.log(countStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
+// console.log(countStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
