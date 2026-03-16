@@ -15,7 +15,7 @@ function countStudents(students, sandwiches) {
       students.shift();
       sandwiches.shift();
       rotations = 0;
-    } else {
+    } else {...
       students.push(students.shift());
       rotations++;
     }
