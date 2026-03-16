@@ -16,11 +16,11 @@ function countStudents(students, sandwiches) {
     let student = students[i];
     if(student===sandwiches[0]){
       students.shift();
-      sandwiches.shift();
+      sandwiches.shift();9-=
 
     }
 
-    
+
 
     }
   
