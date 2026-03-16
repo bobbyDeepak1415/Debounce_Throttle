@@ -19,7 +19,7 @@ function countStudents(students, sandwiches) {
       if (sandwich !== student) {
         let item = students.shift();
         students.push(item);
-        students.splice(0, 1);
+        // students.splice(0, 1);
       }
       students.shift();
       sandwiches.shift();
