@@ -10,15 +10,10 @@
 // )
 
 function countStudents(students, sandwiches) {
-  for (let i = 0; i <= students.length; i++) {
-    let student = students[i];
-    if (student !== sandwiches[0]) {
-      students.push(students.shift());
-    }
+  
+  let rotations=0
 
-    students.shift();
-    sandwiches.shift();
-  }
+  while(students.length && rotations<=students.length)
 
   return students.length;
 }
