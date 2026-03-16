@@ -14,8 +14,14 @@ console.log("hello");
 function countStudents(students, sandwiches) {
   for (let i = 0; i <= students.length; i++) {
     let student = students[i];
+    if(student===sandwiches[0]){
       students.shift();
       sandwiches.shift();
+
+    }
+
+    
+
     }
   
   return students.length;
