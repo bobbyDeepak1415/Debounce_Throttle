@@ -10,9 +10,6 @@
 // )
 
 
-let arr=[1,2,3,4]
-arr.shift();
-console.log(arr)
 
 function countStudents(students, sandwiches) {
   for (let i = 0; i <= students.length; i++) {
