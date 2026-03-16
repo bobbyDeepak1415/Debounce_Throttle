@@ -13,7 +13,9 @@ function countStudents(students, sandwiches) {
   
   let rotations=0
 
-  while(students.length && rotations<=students.length)
+  while(students.length && rotations<=students.length){
+    
+  }
 
   return students.length;
 }
