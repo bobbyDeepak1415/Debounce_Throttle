@@ -9,20 +9,9 @@
 //   </StrictMode>,
 // )
 function countStudents(students, sandwiches) {
-
-let rotations=0
-
-while(students.length && rotations<students.length){
   
-  students.shift()
-  sandwiches.shift()
-
-
 }
 
-  return students.length
-}
+// console.log(countStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
 
-console.log(countStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
-
-// console.log(countStudents([1, 1, 0, 0], [0, 1, 0, 1]));
+console.log(countStudents([1, 1, 0, 0], [0, 1, 0, 1]));
