@@ -9,15 +9,19 @@
 //   </StrictMode>,
 // )
 
-console.log("hello");
+
+let arr=[1,2,3,4]
+arr.shift();
+console.log(arr)
 
 function countStudents(students, sandwiches) {
   for (let i = 0; i <= students.length; i++) {
     let student = students[i];
-    if(student===sandwiches[0]){
-      students.shift();
-      sandwiches.shift();9-=
+    if(student!==sandwiches[0]){
 
+      students.push()
+
+      
     }
 
 
