@@ -10,21 +10,20 @@
 // )
 
 function displayNums(students, sandwiches) {
+  let rotations = 0;
 
-  let rotations=0
-
-  while(students.length&rotations<students.length){
-    if(students[0]!==sandwiches[0]){
-      students.push(students.shift())
-      rotations++
-    }else{
-      students.shift()
-      sandwiches.shift()
+  while (students.length && rotations < students.length) {
+    if (students[0] !== sandwiches[0]) {
+      students.push(students.shift());
+      rotations++;
+      continue;
     }
+    sandwiches.shift();
+    students.shift();
+    rotations = 0;
   }
 
-
-
+  return students.length;
 }
 
 console.log(displayNums([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
