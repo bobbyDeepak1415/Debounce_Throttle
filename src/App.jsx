@@ -49,7 +49,7 @@ const App = () => {
   };
 
   const filteredNames = userNames.filter((name) =>
-    name.toLowerCase().startsWith(input.toLowerCase())
+    name.toLowerCase().startsWith(input.toLowerCase()),
   );
 
   const handleClick = () => {
