@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchData from "./hooks/useFetchData";
 
-const practice=()=> {
+const Practice=()=> {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
 
@@ -39,5 +39,5 @@ const practice=()=> {
   );
 }
 
-
+export default Practice
 
