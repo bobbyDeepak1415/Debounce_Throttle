@@ -34,7 +34,7 @@ const App = () => {
 
   const debouncedState = myDebounce((value) => {
     setInput(value);
-  }, 1500);
+  }, 1000);
 
   useEffect(() => {
     fetchData();
@@ -59,6 +59,7 @@ const App = () => {
 
   return (
     <div>
+      <h2>Hello</h2>
       <input value={localValue} onChange={handleChange}></input>
       <button onClick={handleClick}>Enter</button>
       <div>
