@@ -6,7 +6,9 @@ const Practice2 = () => {
 
   const { products } = useFetchData("https://dummyjson.com/products?limit=20");
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
 
   const filteredProducts = input.length
     ? products
