@@ -1,24 +1,30 @@
-import React from 'react'
-import useFetchData from './useFetchData'
+import React, { useState } from "react";
+import useFetchData from "./useFetchData";
 
 const Practice2 = () => {
+  const [input, setInput] = useState("");
 
   const { products } = useFetchData("https://dummyjson.com/products?limit=20");
 
+  const handleChange = () => {};
+
+  const filteredProducts = input.length
+    ? products
+    : products.filter(
+        (prod) => prod.title.toLowerCase() === input.toLocaleLowerCase(),
+      );
 
   return (
     <div>
-
-<h1>Hello</h1>
-<ul>
-  
-</ul>
-{products.map((product)=>{
-  return <li key={product.id}>{product.title}</li>
-})}
-      
+      <h1>Hello</h1>
+      <input onChange={handleChange} value={input} />
+      <button>Search</button>
+      <ul></ul>
+      {filteredProducts.map((product) => {
+        return <li key={product.id}>{product.title}</li>;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Practice2
+export default Practice2;
