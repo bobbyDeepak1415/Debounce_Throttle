@@ -21,6 +21,9 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   const myDebounce = (func, delay) => {
     let timer = 0;
 
@@ -35,10 +38,6 @@ const App = () => {
   const debouncedState = myDebounce((value) => {
     setInput(value);
   }, 1000);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
