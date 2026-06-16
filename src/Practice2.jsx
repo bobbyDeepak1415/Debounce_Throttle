@@ -10,7 +10,7 @@ const Practice2 = () => {
     setInput(e.target.value);
   };
 
-  const filteredProducts = input.length
+  const filteredProducts = !input.length
     ? products
     : products.filter((prod) =>
         prod.title.toLowerCase().startsWith(input.toLowerCase()),

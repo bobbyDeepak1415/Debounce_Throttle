@@ -1,25 +1,23 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const useFetchData = (url) => {
+  const [products, setProducts] = useState([]);
 
-    const [products,setProducts]=useState([])
+  useEffect(() => {
+    const fetchProds = async () => {
+      try {
+        const res = await axios.get(url);
+        setProducts(res.data.products);
+      } catch (er) {
+        console.log("failed to fetch...", er);
+      }
+    };
 
-    useEffect(()=>{
-        const fetchProds=async ()=>{
-            try{
+    fetchProds();
+  },[url]);
 
-                const res=await axios.get(url)
-                setProducts(res.data.products)
-            }catch(er){
-                console.log("failed to fetch...",er)
-            }
-        }
+  return { products };
+};
 
-        fetchProds()
-    })
-
-  return {products}
-}
-
-export default useFetchData
+export default useFetchData;
