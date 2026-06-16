@@ -6,10 +6,6 @@ const Practice2 = () => {
 
   const { products } = useFetchData("https://dummyjson.com/products?limit=20");
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
-
   const filteredProducts = !input.length
     ? products
     : products.filter((prod) =>
@@ -19,7 +15,7 @@ const Practice2 = () => {
   return (
     <div>
       <h1>Hello</h1>
-      <input onChange={handleChange} value={input} />
+      <input onChange={(e) => setInput(e.target.value)} value={input} />
       <button>Search</button>
       <ul></ul>
       {filteredProducts.map((product) => {
