@@ -10,8 +10,8 @@ const Practice2 = () => {
 
   const filteredProducts = input.length
     ? products
-    : products.filter(
-        (prod) => prod.title.toLowerCase() === input.toLocaleLowerCase(),
+    : products.filter((prod) =>
+        prod.title.toLowerCase().startsWith(input.toLowerCase()),
       );
 
   return (
