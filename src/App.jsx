@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {  useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const App = () => {
   const [input, setInput] = useState("");
@@ -35,12 +35,11 @@ const App = () => {
     };
   };
 
-const debounceFunc = useMemo(()=>{
-myDebounce((value)=>{
-setInput(value)
-},1000)
-},[])
-
+  const debounceFunc = useMemo(() => {
+    return myDebounce((value) => {
+      setInput(value);
+    }, 1000);
+  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
