@@ -11,4 +11,6 @@
 cleanUpFunction
 })
 
-5.getDerivedStateFromProps-usually passing props and inside useEffect
+5.getDerivedStateFromProps-usually passing props directlt and inside useEffect
+
+6.shouldComponentUpdate-React.memo,useCallBack,useMemo
