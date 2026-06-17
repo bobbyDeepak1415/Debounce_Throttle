@@ -3,6 +3,7 @@ import useFetchData from "./useFetchData";
 
 const Practice = () => {
   const [input, setInput] = useState("");
+  const [localValue, setLocalValue] = useState("");
 
   const { products } = useFetchData("https://dummyjson.com/products?limit=20");
 
@@ -12,10 +13,32 @@ const Practice = () => {
         prod.title.toLowerCase().includes(input.toLocaleLowerCase()),
       );
 
+  const myDebounce = (func, delay) => {
+    let timer = 0;
+
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debounceFunc = myDebounce((value) => {
+    setInput(value);
+  }, 1000);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setLocalValue(value);
+
+    debounceFunc(value);
+  };
+
   return (
     <div>
       <h1>Hello</h1>
-      <input onChange={(e) => setInput(e.target.value)} value={input} />
+      <input onChange={handleChange} value={input} />
       <button>Search</button>
       <ul></ul>
       {filteredProducts.map((product) => {
