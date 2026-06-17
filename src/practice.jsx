@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import useFetchData from "./useFetchData";
 
 const Practice = () => {
-  return <div>Hello</div>;
+
+  const [input,setInput]=useState("")
+
+  const { products } = useFetchData("https://dummyjson.com/products");
+
+  return <div>Hello
+
+
+  </div>;
 };
 
 export default Practice;
