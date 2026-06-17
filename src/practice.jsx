@@ -38,7 +38,7 @@ const Practice = () => {
   return (
     <div>
       <h1>Hello</h1>
-      <input onChange={handleChange} value={input} />
+      <input value={localValue} onChange={handleChange} value={input} />
       <button>Search</button>
       <ul></ul>
       {filteredProducts.map((product) => {
