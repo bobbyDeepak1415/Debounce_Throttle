@@ -18,24 +18,22 @@ const run = document.getElementById("funcRun_Times");
 let clickedTimes = 0;
 let runTimes = 0;
 
+const myDebounce = (func, delay) => {
+  let timer = 0;
 
-const myDebounce=(func,delay)=>{
-let timer=0
-
-return 
-
-
-
-}
-
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
 
 const debouncFunc = myDebounce(() => {
   run.innerHTML = ++runTimes;
-},1000)
+}, 1000);
 
 button.addEventListener("click", () => {
   clicked.innerHTML = ++clickedTimes;
   debouncFunc();
 });
-
-
