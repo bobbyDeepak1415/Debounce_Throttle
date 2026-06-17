@@ -6,8 +6,12 @@ const Practice2 = () => {
 
   const { products } = useFetchData("https://dummyjson.com/products?limit=20");
 
-  const filteredProducts=!input.length? products : products.filter(prod=>prod.title) 
-  
+  const filteredProducts = !input.length
+    ? products
+    : products.filter((prod) =>
+        prod.title.toLowerCase().includes(input.toLocaleLowerCase()),
+      );
+
   return (
     <div>
       <h1>Hello</h1>
