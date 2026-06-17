@@ -1,10 +1,34 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import useFetchData from "./useFetchData";
 
 const Practice = () => {
   const [input, setInput] = useState("");
 
+  // const [localalue, setLocalValue] = useState("");
+
   const { products } = useFetchData("https://dummyjson.com/products");
+
+  const myDebounce = (func, delay) => {
+    let timer = 0;
+
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debounceFunc = useMemo(() => {
+    return myDebounce((value) => {
+      setInput(value);
+    }, 1000);
+  }, []);
+
+  const handleChange = (e) => {
+    // setLocalValue(e.target.value);
+    debounceFunc(e.target.value);
+  };
 
   const filteredProducts = !input.length
     ? products
@@ -15,7 +39,7 @@ const Practice = () => {
   return (
     <div>
       <h1>Hello</h1>
-      <input value={input} onChange={(e) => setInput(e.target.value)} />
+      <input value={input} onChange={handleChange} />
       <ul>
         {filteredProducts.map((prod) => {
           return <li key={prod.id}>{prod.title}</li>;
