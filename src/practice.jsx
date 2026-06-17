@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import useFetchData from "./useFetchData";
 
 const Practice = () => {
@@ -19,9 +19,11 @@ const Practice = () => {
     };
   };
 
-  const debounceFunc = myDebounce((value) => {
-    setInput(value);
-  }, 1000);
+  const debounceFunc = useMemo(() => {
+    return myDebounce((value) => {
+      setInput(value);
+    }, 1000);
+  }, []);
 
   const handleChange = (e) => {
     setLocalValue(e.target.value);
