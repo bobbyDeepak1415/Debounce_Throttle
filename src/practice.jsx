@@ -6,6 +6,8 @@ const Practice = () => {
 
   const [allProducts, setAllProducts] = useState([]);
 
+  const [localValue,setLocalValue]=useState("")
+
   const fetchData = async () => {
     const res = await axios.get("https://dummyjson.com/products");
 
@@ -17,19 +19,19 @@ const Practice = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = !input.length
-    ? allProducts
-    : allProducts.filter((product) =>
-        product.title.toLowerCase().includes(input.toLowerCase),
-      );
+  const filteredProducts = input.length
+    ? allProducts.filter((product) =>
+        product.title.toLowerCase().includes(input.toLowerCase()),
+      )
+    : allProducts;
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    setLocalValue(e.target.value)
   };
 
   return (
     <div>
-      <input value={input} onChange={handleChange} />
+      <input value={localValue} onChange={handleChange} />
 
       <ul>
         {filteredProducts.map((product) => {
