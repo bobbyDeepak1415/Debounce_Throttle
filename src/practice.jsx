@@ -42,7 +42,7 @@ const Practice = () => {
   }, []);
 
   const handleChange = (e) => {
-    setLocalValue(e.target.value);
+    // setLocalValue(e.target.value);
 
     debounceFunc(e.target.value);
   };
