@@ -17,12 +17,8 @@ const Practice = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = input.length
-    ? allProducts.filter((product) =>
-        product.title.toLowerCase().includes(input.toLowerCase()),
-      )
-    : allProducts;
-
+  const filteredProducts=allProducts
+  
   const handleChange = (e) => {
     setInput(e.target.value);
   };
