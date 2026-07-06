@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const Practice = () => {
   const [input, setInput] = useState("");
 
   const [allProducts, setAllProducts] = useState([]);
 
-  const [localValue,setLocalValue]=useState("")
+  const [localValue, setLocalValue] = useState("");
 
   const fetchData = async () => {
     const res = await axios.get("https://dummyjson.com/products");
@@ -19,6 +19,23 @@ const Practice = () => {
     fetchData();
   }, []);
 
+  const myDebounce = (func, delay) => {
+    let timer = 0;
+
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debounceFunc = useMemo(() => {
+    return myDebounce((value) => {
+      setInput(value);
+    }, 1000);
+  }, []);
+
   const filteredProducts = input.length
     ? allProducts.filter((product) =>
         product.title.toLowerCase().includes(input.toLowerCase()),
@@ -26,7 +43,8 @@ const Practice = () => {
     : allProducts;
 
   const handleChange = (e) => {
-    setLocalValue(e.target.value)
+    setLocalValue(e.target.value);
+    debounceFunc(e.target.value);
   };
 
   return (
