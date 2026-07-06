@@ -19,7 +19,7 @@ const Practice = () => {
 
   const filteredProducts = input.length
     ? allProducts.filter((product) =>
-        product.toLowerCase().startsWith(input.toLowerCase()),
+        product.title.toLowerCase().includes(input.toLowerCase()),
       )
     : allProducts;
 
