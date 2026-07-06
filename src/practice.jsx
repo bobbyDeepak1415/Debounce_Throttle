@@ -8,16 +8,21 @@ const Practice = () => {
 
   const [localValue, setLocalValue] = useState("");
 
-  const fetchData = async () => {
-    const res = await axios.get("https://dummyjson.com/products");
-
-    const response = await res.data.products;
-    setAllProducts(response);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get("https://dummyjson.com/products");
+
+      const response = await res.data.products;
+      setAllProducts(response);
+    };
     fetchData();
   }, []);
+
+  const filteredProducts = input.length
+    ? allProducts.filter((product) =>
+        product.title.toLowerCase().includes(input.toLowerCase()),
+      )
+    : allProducts;
 
   const myDebounce = (func, delay) => {
     let timer = 0;
@@ -36,14 +41,9 @@ const Practice = () => {
     }, 1000);
   }, []);
 
-  const filteredProducts = input.length
-    ? allProducts.filter((product) =>
-        product.title.toLowerCase().includes(input.toLowerCase()),
-      )
-    : allProducts;
-
   const handleChange = (e) => {
     setLocalValue(e.target.value);
+
     debounceFunc(e.target.value);
   };
 
