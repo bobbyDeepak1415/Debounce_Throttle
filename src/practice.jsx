@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Practice = () => {
-  return <div></div>;
+
+  const [input,setInput]=useState("")
+  return <div>
+
+  <input></input>
+
+
+  </div>;
 };
 
 export default Practice;
