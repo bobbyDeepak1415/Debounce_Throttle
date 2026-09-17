@@ -14,27 +14,27 @@ const Practice = () => {
         const response=await res.json()
         console.log(response.users)
 
-        // const firstNames=response.map((user)=>{
-        //   return {
-        //     name:user.firstName
-        //   }
-        // })
+        const firstNames=response.users.map((user)=>{
+          return {
+            name:user.firstName
+          }
+        })
 
-        setUserNames(response.users)
+        setUserNames(firstNames)
       }catch(err){
         console.log("failed to fetch...",err)
       }
     }
 
-    // fetchData()
-  })
+    fetchData()
+  },[])
 
   return <div>
     <h2>UserNames List:</h2>
 <ul>
 
     {userNames.map((user)=>{
-      return <li>{user.name}</li>
+      return <li key={user.id}>{user.name}</li>
     })}
     </ul>
 
