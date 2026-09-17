@@ -14,7 +14,7 @@ const Practice = () => {
 
         const res=await fetch("https://dummyjson.com/users")
         const response=await res.json()
-        console.log(response.users)
+        // console.log(response.users)
 
         const firstNames=response.users.map((user)=>{
           return {
@@ -31,10 +31,11 @@ const Practice = () => {
     fetchData()
   },[])
 
+  console.log(userNames)
 
-  const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(item))
+  const filteredNames=userNames.filter((user)=>user.name.toLowerCase().includes(query.toLowerCase()))
 
-  return <div>
+  return <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
     <h2>UserNames List:</h2>
 
     <input value={query} onChange={(e)=>setQuery(e.target.value)}/>
