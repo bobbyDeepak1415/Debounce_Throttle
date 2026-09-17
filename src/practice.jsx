@@ -4,6 +4,8 @@ const Practice = () => {
 
   const [userNames,setUserNames]=useState([])
 
+  const [query,setQuery]=useState("")
+
 
   useEffect(()=>{
 
@@ -29,8 +31,13 @@ const Practice = () => {
     fetchData()
   },[])
 
+
+  const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(item))
+
   return <div>
     <h2>UserNames List:</h2>
+
+    <input value={query} onChange={(e)=>setQuery(e.target.value)}/>
 <ul>
 
     {userNames.map((user)=>{
