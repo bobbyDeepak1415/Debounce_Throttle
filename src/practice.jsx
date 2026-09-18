@@ -15,11 +15,9 @@ const Practice = () => {
         const res=await fetch("https://dummyjson.com/users")
         const response=await res.json()
 
-        const firstNames=response.map((user)=>{
-          return {
-            name:user.firstNAME
-          }
-        })
+        const firstNames=response.map((user)=>user.firstName)
+
+        console.log(firstNames)
         
         setUserNames(firstNames)
       }catch(err){
