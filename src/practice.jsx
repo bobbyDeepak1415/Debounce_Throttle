@@ -6,6 +6,7 @@ const Practice = () => {
 
   const [query,setQuery]=useState("")
 
+  console.log(userNames)
 
   useEffect(()=>{
 
@@ -31,7 +32,7 @@ const Practice = () => {
     fetchData()
   },[])
 
-  console.log(userNames)
+  // console.log(userNames)
 
   const filteredNames=userNames.filter((user)=>user.name.toLowerCase().includes(query.toLowerCase()))
 
