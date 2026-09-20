@@ -1,14 +1,22 @@
 
 
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Practice = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+
+    // return () => clearInterval(id);
+  }, []);
+
+  return <div>count at:{count}
+  
+  </div>;
 }
 
 export default Practice
