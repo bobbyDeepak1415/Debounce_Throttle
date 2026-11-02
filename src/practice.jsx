@@ -13,10 +13,16 @@ let runTimes=0
 
 
 
-btn.addEventListener("click",()=>{
-  console.log("hello")
-  clickedTimes++
+const debounceFunc=()=>{
   runTimes++
+
+}
+
+
+btn.addEventListener("click",()=>{
+  clickedTimes++
+
+  debounceFunc()
 
 clicked.innerText=clickedTimes
 run.innerText=runTimes
