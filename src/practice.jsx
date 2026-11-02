@@ -4,25 +4,26 @@ const btn=document.querySelector("button")
 
 
 
-const clicked=document.getElementById("clicked_times")
+const clicked=document.getElementById("clicked_Times")
 const run=document.getElementById("funcRun_Times")
 
 let clickedTimes=0
 let runTimes=0
-
-clicked.innerText=clickedTimes
-run.innerHTML=runTimes
-
-
 
 
 
 
 btn.addEventListener("click",()=>{
   console.log("hello")
-  clickedTimes+=1
-  runTimes+=1
+  clickedTimes++
+  runTimes++
+
+clicked.innerText=clickedTimes
+run.innerText=runTimes
+
+
 })
+
 
 
 
