@@ -26,7 +26,7 @@ run.innerText=runTimes
 
 
 
-
+// now use two functions debounceFunc() and myDebounce() to create a debounce functionality,where the mydebounce has a delay of 2000 ms
 
 
 
