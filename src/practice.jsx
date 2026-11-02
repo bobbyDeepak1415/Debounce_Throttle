@@ -10,10 +10,8 @@ const run=document.getElementById("funcRun_Times")
 let clickedTimes=0
 let runTimes=0
 
-const debounceFunc=()=>{
-  clicked.innerText=clickedTimes
-  run.innerHTML=runTimes
-}
+clicked.innerText=clickedTimes
+run.innerHTML=runTimes
 
 
 
@@ -22,7 +20,8 @@ const debounceFunc=()=>{
 
 btn.addEventListener("click",()=>{
   console.log("hello")
-  debounceFunc()
+  clickedTimes+=1
+  runTimes+=1
 })
 
 
