@@ -11,12 +11,24 @@ let clickedTimes=0
 let runTimes=0
 
 
+const myDebounce=(func,delay)=>{
 
+  let timer=0
 
-const debounceFunc=()=>{
-  runTimes++
+  return function(...args){
+clearTimeout(timer)
+timer=setTimeout(()=>{
+func(...args)
+},delay)
+  }
 
 }
+
+
+const debounceFunc=myDebounce(()=>{
+  runTimes++
+
+},1500)
 
 
 btn.addEventListener("click",()=>{
@@ -29,6 +41,8 @@ run.innerText=runTimes
 
 
 })
+
+
 
 
 
