@@ -6,10 +6,10 @@ const clicked=document.getElementById("clicked_Times")
 const run=document.getElementById("funcRun_Times")
 
 
-let typedCount=0
+let clickedCount=0
 let runCount=0
 
-clicked.innerHTML=typedCount
+clicked.innerHTML=clickedCount
     run.innerHTML=runCount
 
 
@@ -20,7 +20,7 @@ let lastRun=0
 return function(...args){
 let timeNow=Date.now()
 
-if(timeNow-lastRun>=delay){
+if(timeNow-lastRun>delay){
  lastRun=timeNow
  func(...args)   
 }
@@ -35,12 +35,12 @@ if(timeNow-lastRun>=delay){
         runCount++
         run.innerHTML=runCount
 
-    },15000)
+    },1000)
 
 
 button.addEventListener("click",()=>{
-    typedCount++
-    clicked.innerHTML=typedCount
+    clickedCount++
+    clicked.innerHTML=clickedCount
 throttleFunc()
 
 })
