@@ -8,37 +8,39 @@ let run=document.getElementById("funcRun_Times")
 let clickedTimes=0
 let runTimes=0
 
-clicked.innerText=clickedTimes
-run.innerText=runTimes
 
 
 
-const myDebounce=(func,delay)=>{
+const myThrottle=(func,delay)=>{
   
-  let timer=0
+  let lastRun=0
   
   return function(...args){
-    clearTimeout(timer)
-    timer=setTimeout(()=>{
+    let timeNow=Date.now()
+    if(timeNow-lastRun>delay){
+      lastRun=timeNow
       func(...args)
-    },delay)
+    }
+    
   }
+  
+  
   
 }
 
 
-const debounceFunc=myDebounce(()=>{
+const throttleFunc=myThrottle(()=>{
   runTimes++
-  run.innerText=runTimes
+  run.innerHTML=runTimes
   
-},1500)
+},1000)
 
 
 btn.addEventListener("click",()=>{
   clickedTimes++
-  clicked.innerText=clickedTimes
-
-  debounceFunc()
+  
+  clicked.innerHTML=clickedTimes
+  throttleFunc()
 
 
 
