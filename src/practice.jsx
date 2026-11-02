@@ -2,42 +2,44 @@
 
 const btn=document.querySelector("button")
 
-
-
-const clicked=document.getElementById("clicked_Times")
-const run=document.getElementById("funcRun_Times")
+let clicked=document.getElementById("clicked_Times")
+let run=document.getElementById("funcRun_Times")
 
 let clickedTimes=0
 let runTimes=0
 
+clicked.innerText=clickedTimes
+run.innerText=runTimes
+
+
 
 const myDebounce=(func,delay)=>{
-
+  
   let timer=0
-
+  
   return function(...args){
-clearTimeout(timer)
-timer=setTimeout(()=>{
-func(...args)
-},delay)
+    clearTimeout(timer)
+    timer=setTimeout(()=>{
+      func(...args)
+    },delay)
   }
-
+  
 }
 
 
 const debounceFunc=myDebounce(()=>{
   runTimes++
-
+  run.innerText=runTimes
+  
 },1500)
 
 
 btn.addEventListener("click",()=>{
   clickedTimes++
+  clicked.innerText=clickedTimes
 
   debounceFunc()
 
-clicked.innerText=clickedTimes
-run.innerText=runTimes
 
 
 })
@@ -46,7 +48,6 @@ run.innerText=runTimes
 
 
 
-// now use two functions debounceFunc() and myDebounce() to create a debounce functionality,where the mydebounce has a delay of 2000 ms
 
 
 
