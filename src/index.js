@@ -16,7 +16,7 @@ run.innerText=runTimes
 
 const myDebounce=(func,delay)=>{
 let timer=0
-..
+
 return function(...args){
 clearInterval(timer)
 timer=setInterval(()=>{
@@ -32,7 +32,7 @@ const debounceFunc=myDebounce(()=>{
     runTimes++
     run.innerText=runTimes
     
-},800)
+},1500)
 
 input.addEventListener("input",()=>{
     typedTimes++
