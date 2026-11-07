@@ -3,20 +3,39 @@
 console.log("hello")
 
 
-const button=document.querySelector("button")
-const clicked=document.getElementById("clicked_Times")
+const input=document.querySelector("input")
+const typed=document.getElementById("typed_Times")
 const run=document.getElementById("funcRun_Times")
 
 
-let clickedTimes=0
+let typedTimes=0
 let runTimes=0
 
-clicked.innerText=clickedTimes
+typed.innerText=typedTimes
 run.innerText=runTimes
 
-button.addEventListener("click",()=>{
-    clickedTimes++
-    clicked.innerText=clickedTimes
+const myDebounce=(func,delay)=>{
+let timer=0
+
+return function(...args){
+clearInterval(timer)
+timer=setInterval(()=>{
+func(...args)
+},delay)
+}
+
+}
+
+
+
+const debounceFunc=myDebounce(()=>{
     runTimes++
     run.innerText=runTimes
+    
+},800)
+
+input.addEventListener("input",()=>{
+    typedTimes++
+    typed.innerText=typedTimes
+    debounceFunc()
 })
