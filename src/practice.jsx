@@ -30,12 +30,16 @@ setItem(e.target.value)
 
 }
 
+const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(item.toLowerCase()))
+
   return (
     <div>
       <input value={item} onChange={handleChange}/>
       <div>
         <ul>
-          {}
+          {filteredNames.map((name,index)=>{
+            return <li key={index}>{name}</li>
+          })}
         </ul>
       </div>
     </div>
