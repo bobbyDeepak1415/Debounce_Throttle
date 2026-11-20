@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 
 
@@ -7,6 +7,8 @@ const Practice = () => {
 
 const [userNames,setUserNames]=useState([])
 const [item,setItem]=useState("")
+
+const [localValue,setLocalValue]=useState("")
 
 
 useEffect(()=>{
@@ -24,8 +26,28 @@ console.log(firstNames)
 fetchData()
 },[])
 
+const myDebounce=(func,delay)=>{
+let timer=0
+
+return function(...args){
+    clearTimeout(timer)
+timer=setTimeout(()=>{
+    func(...args)
+},delay)
+}
+
+}
+
+const debounceFunc=useMemo(()=>{
+return myDebounce((value)=>{
+setItem(value)
+},1000)
+})
+
 const handleChange=(e)=>{
-setItem(e.target.value)
+setLocalValue(e.target.value)
+debounceFunc(e.target.value)
+
 
 
 }
@@ -34,7 +56,7 @@ const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(item.to
 
   return (
     <div>
-      <input value={item} onChange={handleChange}/>
+      <input value={localValue} onChange={handleChange}/>
       <div>
         <ul>
           {filteredNames.map((name,index)=>{
