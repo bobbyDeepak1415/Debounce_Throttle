@@ -41,7 +41,7 @@ timer=setTimeout(()=>{
 const debounceFunc=useMemo(()=>{
 return myDebounce((value)=>{
 setItem(value)
-},1000)
+},1500)
 })
 
 const handleChange=(e)=>{
@@ -59,7 +59,7 @@ const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(item.to
       <input value={localValue} onChange={handleChange}/>
       <div>
         <ul>
-          {filteredNames.map((name,index)=>{
+          {item.length>0 &&filteredNames.map((name,index)=>{
             return <li key={index}>{name}</li>
           })}
         </ul>
