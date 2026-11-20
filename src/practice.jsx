@@ -7,6 +7,8 @@ const Practice = () => {
   const handleClick=()=>{
     count.current++
 
+    console.log(count.current)
+
   }
 
   return (
