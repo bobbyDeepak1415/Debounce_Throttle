@@ -12,10 +12,28 @@ let runTimes=0
 typed.innerText=typedTimes
 run.innerText=runTimes
 
+
+const myDebounce=(func,delay)=>{
+let timer=0
+
+return function(...args){
+    clearTimeout(timer)
+timer=setTimeout(()=>{
+    func(...args)
+},delay)
+}
+
+}
+
+const debounceFunc=myDebounce(()=>{
+    runTimes++
+    run.innerText=runTimes
+
+},1500)
+
 input.addEventListener("input",()=>{
     typedTimes++
-runTimes++
 typed.innerText=typedTimes
-run.innerText=runTimes
+debounceFunc()
 
 })
