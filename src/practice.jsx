@@ -1,72 +1,76 @@
-import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
-
+import React, { useEffect, useMemo, useState } from 'react'
 
 const Practice = () => {
-  const [input, setInput] = useState("");
+
+  const [item,setItem]=useState("")
+  const [localValue,setLocalValue]=useState("")
+  const [users,setUsers]=useState([])
+
+
+  const url="https://dummyjson.com/users"
+
+
+  useEffect(()=>{
+const fetchData=async()=>{
+  const res=await fetch(url)
+  const response=await res.json()
+  // console.log(response.users)
   
-    const [userNames, setUserNames] = useState([]);
-
-    const [localValue,setLocalValue]=useState("")
-
-    useEffect(()=>{
-const fetchData = async () => {
-    try {
-      const response = await axios.get("https://dummyjson.com/users");
-
-      const result = response.data.users;
-      setUserNames(result.map((u) => u.firstName));
-    } catch (e) {
-      console.log("failed to fetch...", e);
+  const userNames=response.users.map((user)=>{
+    return {
+      name:user.firstName
     }
-  };
+  })
+  
+  // console.log(userNames)
 
-  fetchData();
+  setUsers(userNames)
 
-    },[])
+}
 
-    const myDebounce=(func,delay)=>{
+fetchData()
+  },[])
+
+  const myDebounce=(func,delay)=>{
 let timer=0
+
 return function(...args){
 clearTimeout(timer)
 timer=setTimeout(()=>{
-func(...args)
+  func(...args)
+
 },delay)
 }
+  }
 
-    }
-
-
-    const debounceFunc=useMemo(()=>{
+  const debounceFunc=useMemo(()=>{
 return myDebounce((value)=>{
-setInput(value)
-},800)
-    },[])
+setItem(value)
+},1000)
+  },[])
 
-    const handleChange=(e)=>{
-
+  const handleChange=(e)=>{
 setLocalValue(e.target.value)
 debounceFunc(e.target.value)
-
-    }
-
+  }
 
 
-    const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(input.toLowerCase()))
-    
-
-
+  const filteredNames=users.filter((user)=>user.name.toLowerCase().includes(item.toLowerCase()))
+  
   return (
     <div>
-      <h2>Hello</h2>
-      <input value={localValue} onChange={handleChange}></input>
+
+      <input value={localValue} onChange={handleChange}/>
+
       <div>
         <ul>
-          {filteredNames.map((user, id) => {
-              return <li key={id}>{user}</li>;
-            })}
+
+        {filteredNames.map((user)=>(
+          <li key={user.id}>{user.name}</li>
+        ))}
         </ul>
       </div>
+      
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 // import './index.css'
-import App from "./App.jsx";
-// import Practice from "./Practice.jsx";
+// import App from "./App.jsx";
+import Practice from "./Practice.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-    {/* <Practice/> */}
+    {/* <App /> */}
+    <Practice/>
     
   </StrictMode>,
 );
@@ -21,7 +21,3 @@ createRoot(document.getElementById("root")).render(
 // console.log("4");
 
 
-
-// let a = "20";
-// let b = 5;
-// console.log(a - b);
