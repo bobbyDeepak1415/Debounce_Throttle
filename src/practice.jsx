@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 
@@ -13,8 +14,6 @@ const fetchData = async () => {
       const response = await axios.get("https://dummyjson.com/users");
 
       const result = response.data.users;
-
-      console.log(result.map((u) => u.firstName));
       setUserNames(result.map((u) => u.firstName));
     } catch (e) {
       console.log("failed to fetch...", e);
@@ -26,19 +25,13 @@ const fetchData = async () => {
     },[])
 
 
-    const handleChange = (e) => {
-    const value = e.target.value;
-
-    setInput(value);
-
-    debounceFunc(value);
-  };
+    
 
 
   return (
     <div>
       <h2>Hello</h2>
-      <input value={input} onChange={handleChange}></input>
+      <input value={input} onChange={(e)=>setInput(e.target.value)}></input>
       <div>
         <ul>
           {userNames.map((user, id) => {
