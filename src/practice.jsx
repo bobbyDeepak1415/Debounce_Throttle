@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 
 const Practice = () => {
@@ -7,6 +7,7 @@ const Practice = () => {
   
     const [userNames, setUserNames] = useState([]);
 
+    const [localValue,setLocalValue]=useState("")
 
     useEffect(()=>{
 const fetchData = async () => {
@@ -24,17 +25,41 @@ const fetchData = async () => {
 
     },[])
 
+    const myDebounce=(func,delay)=>{
+let timer=0
+return function(){
+  
+}
 
+    }
+
+
+    const debounceFunc=useMemo(()=>{
+return myDebounce((value)=>{
+setInput(value)
+},1000)
+    },[value])
+
+    const handleChange=(e)=>{
+
+setLocalValue(e.target.value)
+debounceFunc(e.target.value)
+
+    }
+
+
+
+    const filteredNames=userNames.filter((name)=>name.toLowerCase().includes(input.toLowerCase()))
     
 
 
   return (
     <div>
       <h2>Hello</h2>
-      <input value={input} onChange={(e)=>setInput(e.target.value)}></input>
+      <input value={input} onChange={handleChange}></input>
       <div>
         <ul>
-          {userNames.map((user, id) => {
+          {filteredNames.map((user, id) => {
               return <li key={id}>{user}</li>;
             })}
         </ul>
