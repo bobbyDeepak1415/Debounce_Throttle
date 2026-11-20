@@ -27,8 +27,11 @@ const fetchData = async () => {
 
     const myDebounce=(func,delay)=>{
 let timer=0
-return function(){
-  
+return function(...args){
+clearTimeout(timer)
+timer=setTimeout(()=>{
+func(...args)
+},delay)
 }
 
     }
@@ -37,8 +40,8 @@ return function(){
     const debounceFunc=useMemo(()=>{
 return myDebounce((value)=>{
 setInput(value)
-},1000)
-    },[value])
+},800)
+    },[])
 
     const handleChange=(e)=>{
 
@@ -56,7 +59,7 @@ debounceFunc(e.target.value)
   return (
     <div>
       <h2>Hello</h2>
-      <input value={input} onChange={handleChange}></input>
+      <input value={localValue} onChange={handleChange}></input>
       <div>
         <ul>
           {filteredNames.map((user, id) => {
